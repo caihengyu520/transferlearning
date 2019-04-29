@@ -1,0 +1,12 @@
+Transfer learning with manifold regularized convolutional neural network
+这篇论文的核心思想就是在将流行正则化技术和微调用在卷积神经网络上实现迁移学习，亮点也在于此
+
+通过计算三部分损失函数之和作为最终损失函数
+第一部分是source domain分类交叉熵损失函数，保持source domain分类准确性
+第二部分是target domain流形正则化损失  这部分损失强制target domain中具有相同样本结构的样本具有相同标签，取决与最近邻算法中k的设置，即近邻样本数
+第三部分是有关w，b参数的L2正则化损失函数，控制神经网络结构的复杂性
+通过这三部分损失函数实现对pre-trained model微调，提升模型的泛化能力
+
+通过与baseline experiment做对比实验，baseline experiment选取了LR，TSVM，TCA，TLDA（transfer learning with deep dutoencoders），VGG
+
+该模型框架的泛化能力受target domain近邻性能的影响，较好的近邻性会提升模型的泛化性能，然而较差的近邻性能会影响模型的性能，使模型的性能较差。
